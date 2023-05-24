@@ -10,7 +10,7 @@ export default function Header() {
   const { data: sessionData } = useSession();
 
   return (
-    <nav className="flex flex-1 items-center justify-between bg-[#333] px-4 py-3">
+    <nav className="flex flex-1 items-center justify-between bg-[#333] px-4 py-3 text-white">
       <div className="flex items-center gap-4 md:gap-8">
         <div className="flex cursor-pointer items-center gap-2">
           <BsReddit color="red" size={40} />
