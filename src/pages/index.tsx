@@ -5,6 +5,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
 import Header from "./components/Header";
+import PostCreateCard from "./components/PostCreateCard";
+import BlueitPremium from "./components/BlueitPremium";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -19,6 +21,18 @@ const Home: NextPage = () => {
       <main className="min-h-screen bg-black text-white">
         {/* <h1>{"Let's build reddit"}</h1> */}
         <Header />
+        <div className="mx-auto mt-6 flex max-w-[70%] gap-4">
+          <div className="w-[70%]">
+            <PostCreateCard />
+          </div>
+          <div className="flex-1">
+            <BlueitPremium />
+          </div>
+          {/* <div>
+          </div>
+          <div>
+          </div> */}
+        </div>
       </main>
     </>
   );

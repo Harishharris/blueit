@@ -28,12 +28,12 @@ export default function Header() {
         placeholder="Search Blueit"
       />
       <div className="flex items-center gap-4 md:gap-8">
-        <IoNotificationsOutline
-          size={42}
-          className="cursor-pointer rounded-full p-2 hover:bg-[#444]"
-        />
         {sessionData?.user ? (
           <div className="flex items-center gap-4 md:gap-8">
+            <IoNotificationsOutline
+              size={42}
+              className="cursor-pointer rounded-full p-2 hover:bg-[#444]"
+            />
             <img
               src={sessionData.user.image}
               className="h-9 w-9 cursor-pointer rounded-full"
