@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { api } from "~/utils/api";
 
-export default function Form() {
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
+export default function Form({
+  title,
+  setTitle,
+  text,
+  setText,
+  handlePostSubmit,
+}) {
+  const createPost = api.communities.newPost.useMutation();
 
   return (
-    <form className="mt-4">
+    <form className="mt-4" onSubmit={handlePostSubmit}>
       <input
         type="text"
         value={title}

@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { useState } from "react";
+import CreateCommunity from "../models/CreateCommunity";
 
 export default function QuickActions() {
+  const [isOpened, setIsOpened] = useState(false);
+
   return (
     <div className=" top-0 mt-6 scroll-smooth border px-2 py-2">
       <div className="flex gap-4">
@@ -17,9 +21,15 @@ export default function QuickActions() {
           Create Post
         </button>
       </Link>
-      <button className="mt-2 w-full rounded-full border py-1 text-center font-semibold hover:bg-[#222]">
-        Create Community
-      </button>
+      <Link href={"/new-community"}>
+        <button
+          className="mt-2 w-full rounded-full border py-1 text-center font-semibold hover:bg-[#222]"
+          onClick={() => setIsOpened((prev) => !prev)}
+        >
+          Create Community
+        </button>
+      </Link>
+      {isOpened && <CreateCommunity />}
     </div>
   );
 }

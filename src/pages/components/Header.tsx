@@ -2,7 +2,7 @@ import { BsReddit } from "react-icons/bs";
 import { HiHome } from "react-icons/hi";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { useState } from "react";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { AiOutlinePlus } from "react-icons/ai";
 
 export default function Header() {
@@ -44,7 +44,12 @@ export default function Header() {
             />
           </div>
         ) : (
-          <button className="rounded-full bg-blue-500 px-4 py-2">Login</button>
+          <button
+            className="rounded-full bg-blue-500 px-4 py-2"
+            onClick={() => void signIn()}
+          >
+            Login
+          </button>
         )}
       </div>
     </nav>
