@@ -7,8 +7,6 @@ export default function Form({
   setText,
   handlePostSubmit,
 }) {
-  const createPost = api.communities.newPost.useMutation();
-
   return (
     <form className="mt-4" onSubmit={handlePostSubmit}>
       <input

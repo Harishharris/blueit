@@ -2,14 +2,23 @@ import { useState } from "react";
 import CommunityDropDown from "./components/NewPost/CommunitiesDropDown";
 import Form from "./components/NewPost/Form";
 import Header from "./components/NewPost/Header";
+import { api } from "~/utils/api";
 
 export default function Submit() {
   const [selectedCommunity, setSelectedCommunity] = useState("");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
-  function handlePostSubmit() {
-    //
+  const postsMutation = api.communities.newPost.useMutation({});
+
+  async function handlePostSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const res = await postsMutation.mutateAsync({
+      title,
+      text,
+      communityId: selectedCommunity,
+    });
+    console.log(res);
   }
 
   return (

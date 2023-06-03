@@ -11,7 +11,7 @@ import Posts from "./components/Posts";
 import CommunitiesRecommendations from "./components/cards/CommunitiesRecommendations";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>

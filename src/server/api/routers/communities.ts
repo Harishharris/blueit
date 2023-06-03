@@ -38,16 +38,20 @@ export const communitiesRouter = createTRPCRouter({
       z.object({
         title: z.string(),
         text: z.string(),
-        community: z.string(),
+        communityId: z.string(),
       })
     )
-    .mutation(({ ctx, { title, text, community } }) => {
-      return ctx.prisma.community.post.create({
+    .mutation(({ ctx, input: { title, text, communityId } }) => {
+      return ctx.prisma.post.create({
         data: {
           title,
           text,
-          community
+          communityId,
+          userId: ctx.session.user.id,
         },
       });
     }),
+  getAllPosts: protectedProcedure.query(async ({ ctx }) => {
+    return ctx.prisma.post.findMany();
+  }),
 });
