@@ -3,7 +3,7 @@ import { api } from "~/utils/api";
 export default function CommunityDropDown({
   selectedCommunity,
   setSelectedCommunity,
-}) {
+}: any) {
   const { data } = api.communities.getAllCommunities.useQuery();
   console.log(data?.map((item) => console.log(item.id)));
   return (

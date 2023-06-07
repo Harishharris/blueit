@@ -35,7 +35,7 @@ export default function Header() {
               className="cursor-pointer rounded-full p-2 hover:bg-[#444]"
             />
             <img
-              src={sessionData.user.image}
+              src={sessionData?.user.image as string}
               className="h-9 w-9 cursor-pointer rounded-full"
             />
             <AiOutlinePlus
