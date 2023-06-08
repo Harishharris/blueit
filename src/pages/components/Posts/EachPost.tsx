@@ -1,11 +1,15 @@
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
-export default function PostHeader() {
+export default function PostHeader({ communityId }: { communityId: string }) {
   const { data: sessionData } = useSession();
+
   return (
     <div className="w-full">
       <div className="flex gap-4">
-        <div className="cursor-pointer hover:underline">r/harish</div>
+        <div className="cursor-pointer hover:underline">
+          <Link href={`/r/${communityId}`}>r/harish</Link>
+        </div>
         <div>
           Posted by{" "}
           <span className="cursor-pointer hover:underline">u/harishdogo</span>{" "}

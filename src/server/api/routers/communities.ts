@@ -1,6 +1,10 @@
 import { z } from "zod";
 
-import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
+import {
+  createTRPCRouter,
+  protectedProcedure,
+  publicProcedure,
+} from "~/server/api/trpc";
 
 export const communitiesRouter = createTRPCRouter({
   create: protectedProcedure
@@ -51,7 +55,18 @@ export const communitiesRouter = createTRPCRouter({
         },
       });
     }),
-  getAllPosts: protectedProcedure.query(async ({ ctx }) => {
+  getAllPosts: publicProcedure.query(async ({ ctx }) => {
     return ctx.prisma.post.findMany();
   }),
+
+  getAllPostsRelatedToCommunity: publicProcedure
+    .input(z.string())
+    .query(async ({ ctx, input }) => {
+      const data = ctx.prisma.post.findMany({
+        where: {
+          communityId: input,
+        },
+      });
+      return data;
+    }),
 });

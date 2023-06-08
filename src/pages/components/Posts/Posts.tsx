@@ -1,5 +1,5 @@
 import { api } from "~/utils/api";
-import PostHeader from "./PostHeader";
+import EachPost from "./EachPost";
 
 export default function Posts() {
   const { data } = api.communities.getAllPosts.useQuery();
@@ -16,7 +16,7 @@ export default function Posts() {
               <div>156</div>
               <div>Down</div>
             </div>
-            <PostHeader />
+            <EachPost communityId={item.communityId} />
             {/* <div key={item.id} className="flex flex-col gap-2">
               <div className="flex text-sm">
                 <div>{item.communityId}</div>

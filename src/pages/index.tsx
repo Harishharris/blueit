@@ -1,9 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
 
-import PostCreateCard from "./components/PostCreateCard";
+import PostCreateCard from "./components/Posts/PostCreateCard";
 import BlueitPremium from "./components/cards/BlueitPremium";
 import QuickActions from "./components/cards/QuickActions";
 import Posts from "./components/Posts/Posts";
