@@ -5,7 +5,7 @@ import { api } from "~/utils/api";
 export default function CommunityHeader() {
   const { data: sessionData } = useSession();
   const router = useRouter();
-  const communityId = router.query.communityId;
+  // const communityId = router.query.communityId;
   const { data: communityPosts } =
     api.communities.getAllPostsRelatedToCommunity.useQuery(
       router.query.communityId as string
