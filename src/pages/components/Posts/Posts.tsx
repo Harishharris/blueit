@@ -16,7 +16,7 @@ export default function Posts() {
               <div>156</div>
               <div>Down</div>
             </div>
-            <EachPost communityId={item.communityId} />
+            <EachPost postId={item.id} />
             {/* <div key={item.id} className="flex flex-col gap-2">
               <div className="flex text-sm">
                 <div>{item.communityId}</div>

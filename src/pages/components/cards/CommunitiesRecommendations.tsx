@@ -2,7 +2,6 @@ import { api } from "~/utils/api";
 
 export default function CommunitiesRecommendations() {
   const { data } = api.communities.getRecommendedCommunities.useQuery();
-  console.log(data);
   return (
     <div className="mt-4 border">
       <h3 className="px-2">Recommendations: </h3>

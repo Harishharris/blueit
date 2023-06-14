@@ -8,8 +8,10 @@ import Posts from "./components/Posts/Posts";
 import CommunitiesRecommendations from "./components/cards/CommunitiesRecommendations";
 
 const Home: NextPage = () => {
-  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
+  console.log(
+    process.env.SUPABASE_PROJECT_URL || "supabase stuff",
+    process.env.NEXTAUTH_URL || "next auth stuff"
+  );
   return (
     <>
       <Head>
@@ -18,7 +20,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="relative min-h-screen bg-black pb-[30000px] text-white">
-        {/* <Header /> */}
         <div className="mx-auto flex w-full gap-4 md:max-w-[70%]">
           <div className="w-full md:w-[70%]">
             <PostCreateCard />

@@ -1,3 +1,4 @@
+import { Input } from "postcss";
 import { z } from "zod";
 
 import {
@@ -68,5 +69,32 @@ export const communitiesRouter = createTRPCRouter({
         },
       });
       return data;
+    }),
+  getSinglePost: publicProcedure
+    .input(z.string())
+    .query(async ({ ctx, input }) => {
+      return ctx.prisma.post.findUnique({
+        where: {
+          id: input,
+        },
+      });
+    }),
+  getCorrespondingUser: publicProcedure
+    .input(z.string())
+    .query(async ({ ctx, input }) => {
+      return ctx.prisma.user.findFirst({
+        where: {
+          id: input,
+        },
+      });
+    }),
+  getCommunityName: publicProcedure
+    .input(z.string())
+    .query(async ({ ctx, input }) => {
+      return ctx.prisma.community.findFirst({
+        where: {
+          id: input,
+        },
+      });
     }),
 });
