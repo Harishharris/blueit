@@ -1,4 +1,5 @@
 import { Input } from "postcss";
+import { BsCartX } from "react-icons/bs";
 import { z } from "zod";
 
 import {
@@ -14,19 +15,25 @@ export const communitiesRouter = createTRPCRouter({
         title: z.string(),
         subTitle: z.string(),
         description: z.string().max(255),
+        communityImage: z.string(),
       })
     )
-    .mutation(async ({ ctx, input: { title, subTitle, description } }) => {
-      await ctx.prisma.community.create({
-        data: {
-          title,
-          subTitle,
-          description,
-          banner: "This is banner",
-          profileIamge: "This is profile Image",
-        },
-      });
-    }),
+    .mutation(
+      async ({
+        ctx,
+        input: { title, subTitle, description, communityImage },
+      }) => {
+        await ctx.prisma.community.create({
+          data: {
+            title,
+            subTitle,
+            description,
+            banner: "This is banner",
+            profileIamge: communityImage,
+          },
+        });
+      }
+    ),
 
   getRecommendedCommunities: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.community.findMany({
@@ -44,14 +51,16 @@ export const communitiesRouter = createTRPCRouter({
         title: z.string(),
         text: z.string(),
         communityId: z.string(),
+        image: z.string(),
       })
     )
-    .mutation(({ ctx, input: { title, text, communityId } }) => {
+    .mutation(({ ctx, input: { title, text, communityId, image } }) => {
       return ctx.prisma.post.create({
         data: {
           title,
           text,
           communityId,
+          image,
           userId: ctx.session.user.id,
         },
       });
@@ -70,6 +79,7 @@ export const communitiesRouter = createTRPCRouter({
       });
       return data;
     }),
+
   getSinglePost: publicProcedure
     .input(z.string())
     .query(async ({ ctx, input }) => {
@@ -79,6 +89,7 @@ export const communitiesRouter = createTRPCRouter({
         },
       });
     }),
+
   getCorrespondingUser: publicProcedure
     .input(z.string())
     .query(async ({ ctx, input }) => {
@@ -88,6 +99,7 @@ export const communitiesRouter = createTRPCRouter({
         },
       });
     }),
+
   getCommunityName: publicProcedure
     .input(z.string())
     .query(async ({ ctx, input }) => {

@@ -1,4 +1,6 @@
+import { UploadButton } from "@uploadthing/react";
 import { useState } from "react";
+import { OurFileRouter } from "~/server/uploadthing";
 import { api } from "~/utils/api";
 
 export default function CreateCommunity() {
@@ -6,6 +8,8 @@ export default function CreateCommunity() {
   const [text, setText] = useState("");
   const [subTitle, setSubTitle] = useState("");
   const communities = api.communities.create.useMutation();
+  const [fileUrl, setFileUrl] = useState();
+  console.log("file is uploaded thing", fileUrl);
 
   function handleCommunityCreation(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -13,6 +17,7 @@ export default function CreateCommunity() {
       title,
       subTitle,
       description: text,
+      communityImage: fileUrl || "",
     });
     console.log(data);
   }
@@ -52,6 +57,19 @@ export default function CreateCommunity() {
           </button>
         </div>
       </form>
+      <UploadButton<OurFileRouter>
+        endpoint="imageUploader"
+        onClientUploadComplete={(res) => {
+          // Do something with the response
+          console.log("Files: ", res);
+          setFileUrl(res[0]?.fileUrl);
+          alert("Upload Completed");
+        }}
+        onUploadError={(error: Error) => {
+          // Do something with the error.
+          alert(`ERROR! ${error.message}`);
+        }}
+      />
     </div>
   );
 }

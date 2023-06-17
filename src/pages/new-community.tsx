@@ -1,4 +1,3 @@
-import { useState } from "react";
 import CreateCommunity from "./components/models/CreateCommunity";
 
 export default function NewCommunity() {

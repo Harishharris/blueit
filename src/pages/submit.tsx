@@ -8,6 +8,8 @@ export default function Submit() {
   const [selectedCommunity, setSelectedCommunity] = useState("");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [fileUrl, setFileUrl] = useState<string>("");
+  console.log("file is uploaded thing", fileUrl);
 
   const postsMutation = api.communities.newPost.useMutation({});
 
@@ -17,6 +19,7 @@ export default function Submit() {
       title,
       text,
       communityId: selectedCommunity,
+      image: fileUrl,
     });
     console.log(res);
   }
@@ -35,6 +38,8 @@ export default function Submit() {
         text={text}
         setText={setText}
         handlePostSubmit={handlePostSubmit}
+        fileUrl={fileUrl}
+        setFileUrl={setFileUrl}
       />
     </div>
   );

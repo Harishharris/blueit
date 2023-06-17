@@ -1,11 +1,12 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-
 import PostCreateCard from "./components/Posts/PostCreateCard";
 import BlueitPremium from "./components/cards/BlueitPremium";
 import QuickActions from "./components/cards/QuickActions";
 import Posts from "./components/Posts/Posts";
 import CommunitiesRecommendations from "./components/cards/CommunitiesRecommendations";
+// import { UploadButton } from "@uploadthing/react";
+// import { type OurFileRouter } from "~/server/uploadthing";
 
 const Home: NextPage = () => {
   console.log(
