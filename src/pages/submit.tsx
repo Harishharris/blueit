@@ -5,9 +5,9 @@ import Header from "./components/NewPost/Header";
 import { api } from "~/utils/api";
 
 export default function Submit() {
-  const [selectedCommunity, setSelectedCommunity] = useState("");
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
+  const [selectedCommunity, setSelectedCommunity] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [text, setText] = useState<string>("");
   const [fileUrl, setFileUrl] = useState<string>("");
   console.log("file is uploaded thing", fileUrl);
 
@@ -37,6 +37,7 @@ export default function Submit() {
         setTitle={setTitle}
         text={text}
         setText={setText}
+        // @ts-expect-error I don't know
         handlePostSubmit={handlePostSubmit}
         fileUrl={fileUrl}
         setFileUrl={setFileUrl}

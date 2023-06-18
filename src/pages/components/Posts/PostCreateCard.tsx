@@ -9,7 +9,7 @@ export default function PostCreateCard() {
   return (
     <div className="m-auto mb-2 flex items-center justify-between gap-4 rounded-sm bg-[#333] px-4 py-3">
       <img
-        src={sessionData?.user.image}
+        src={sessionData?.user.image || ""}
         className="h-9 w-9 cursor-pointer rounded-full "
         height={36}
         width={36}

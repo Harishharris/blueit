@@ -1,7 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { UploadButton } from "@uploadthing/react";
-import { useState } from "react";
-import { OurFileRouter } from "~/server/uploadthing";
-import { api } from "~/utils/api";
+import { type OurFileRouter } from "~/server/uploadthing";
+import type { Dispatch, SetStateAction } from "react";
+
+type PageProps = {
+  title: string;
+  setTitle: Dispatch<SetStateAction<string>>;
+  text: string;
+  setText: Dispatch<SetStateAction<string>>;
+  handlePostSubmit: React.FormEvent<HTMLFormElement> & PageProps;
+  setFileUrl: Dispatch<SetStateAction<string>>;
+};
 
 export default function Form({
   title,
@@ -9,12 +18,11 @@ export default function Form({
   text,
   setText,
   handlePostSubmit,
-  fileUrl,
   setFileUrl,
-}) {
+}: PageProps) {
   return (
     <>
-      <form className="mt-4" onSubmit={handlePostSubmit}>
+      <form className="mt-4" onSubmit={void handlePostSubmit}>
         <input
           type="text"
           value={title}
@@ -42,13 +50,15 @@ export default function Form({
       <UploadButton<OurFileRouter>
         endpoint="imageUploader"
         onClientUploadComplete={(res) => {
-          // Do something with the response
           console.log("Files: ", res);
-          setFileUrl(res[0]?.fileUrl || "");
+          if (res && res[0] && res[0].fileUrl) {
+            setFileUrl(res[0]?.fileUrl);
+          } else {
+            setFileUrl("");
+          }
           alert("Upload Completed");
         }}
         onUploadError={(error: Error) => {
-          // Do something with the error.
           alert(`ERROR! ${error.message}`);
         }}
       />

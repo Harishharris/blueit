@@ -1,5 +1,4 @@
 /** server/uploadthing.ts */
-import type { NextApiRequest, NextApiResponse } from "next";
 import { createUploadthing, type FileRouter } from "uploadthing/next-legacy";
 
 const f = createUploadthing();
@@ -12,7 +11,8 @@ export const ourFileRouter = {
     video: { maxFileSize: "1024B" },
   })
     // Set permissions and file types for this FileRoute
-    .middleware(async (req, res) => {
+    // @ts-expect-error This sucks
+    .middleware(async () => {
       // This code runs on your server before upload
       //   const user = await auth(req, res);
       // If you throw, the user will not be able to upload

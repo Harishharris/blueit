@@ -46,7 +46,5 @@ export const env = createEnv({
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
-    SUPABASE_PROJECT_URL: process.env.SUPABASE_PROJECT_URL,
-    SUPABASE_API_KEY: process.env.SUPABASE_API_KEY,
   },
 });

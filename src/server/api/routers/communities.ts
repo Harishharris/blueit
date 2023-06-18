@@ -1,5 +1,3 @@
-import { Input } from "postcss";
-import { BsCartX } from "react-icons/bs";
 import { z } from "zod";
 
 import {
