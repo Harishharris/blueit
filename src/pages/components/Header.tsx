@@ -4,6 +4,7 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { AiOutlinePlus } from "react-icons/ai";
+import Image from "next/image";
 
 export default function Header() {
   const [searchInput, setSearchInput] = useState("");
@@ -34,9 +35,10 @@ export default function Header() {
               size={42}
               className="cursor-pointer rounded-full p-2 hover:bg-[#444]"
             />
-            <img
+            <Image
               src={sessionData?.user.image as string}
               className="h-9 w-9 cursor-pointer rounded-full"
+              alt="Image"
             />
             <AiOutlinePlus
               size={42}

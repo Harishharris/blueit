@@ -1,4 +1,5 @@
 import { api } from "~/utils/api";
+import Image from "next/image";
 
 export default function CommunitiesRecommendations() {
   const { data } = api.communities.getRecommendedCommunities.useQuery();
@@ -7,10 +8,11 @@ export default function CommunitiesRecommendations() {
       <h3 className="px-2">Recommendations: </h3>
       {data?.map(({ id, title, profileIamge }) => (
         <div key={id} className="flex items-center justify-between p-2">
-          <img
+          {/* <img
             src={profileIamge ?? "@/../favicon.ico"}
             className="h-10 w-10 rounded-full hover:cursor-pointer"
-          />
+          /> */}
+          <Image src={profileIamge ?? ""} height={16} width={16} alt="Image" />
           <p>{title}</p>
           <button className="rounded-full bg-orange-500 px-6 py-1 text-center">
             Join

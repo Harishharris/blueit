@@ -28,10 +28,7 @@ export default function Submit() {
     <div className="mx-auto min-h-screen w-[70%] px-4 pt-10 text-white">
       <Header />
       <hr></hr>
-      <CommunityDropDown
-        selectedCommunity={selectedCommunity}
-        setSelectedCommunity={setSelectedCommunity}
-      />
+      <CommunityDropDown setSelectedCommunity={setSelectedCommunity} />
       <Form
         title={title}
         setTitle={setTitle}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import CreateCommunity from "../models/CreateCommunity";
+import Image from "next/image";
 
 export default function QuickActions() {
   const [isOpened, setIsOpened] = useState(false);
@@ -8,7 +9,7 @@ export default function QuickActions() {
   return (
     <div className=" top-0 mt-6 scroll-smooth border px-2 py-2">
       <div className="flex gap-4">
-        <img src="jldfjldjfl" alt="Reddit" />
+        <Image src="jldfjldjfl" alt="Reddit" />
         <p>Home</p>
       </div>
       <p className="mb-2 text-[.95rem]">
