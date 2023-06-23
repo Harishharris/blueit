@@ -39,6 +39,8 @@ export default function Header() {
               src={sessionData?.user.image as string}
               className="h-9 w-9 cursor-pointer rounded-full"
               alt="Image"
+              height={36}
+              width={36}
             />
             <AiOutlinePlus
               size={42}

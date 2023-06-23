@@ -23,6 +23,8 @@ export default function PostHeader({ postId }: { postId: string }) {
               src={communityName?.profileIamge || ""}
               className="h-4 w-4 rounded-full"
               alt="Image"
+              height={16}
+              width={16}
             />
             {`r/${communityName?.title ?? ""}`}
           </Link>
@@ -44,6 +46,8 @@ export default function PostHeader({ postId }: { postId: string }) {
           }
           className="w-full object-contain"
           alt="Image"
+          height={100}
+          width={100}
         />
       </div>
       <div className="flex gap-4">
